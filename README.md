@@ -2,8 +2,7 @@
 
 한국사능력검정시험 공부를 게임처럼 기록하는 웹 페이지입니다. 퀘스트를 체크하면 경험치(XP)가 쌓이고, 레벨이 오르고, 보스를 클리어합니다. 휴대폰 홈 화면에 앱처럼 설치해서 쓸 수 있고(PWA), 서버가 필요 없습니다.
 
-**바로 써 보기:** `https://내아이디.github.io/저장소이름/` (GitHub Pages로 공개한 뒤 이 주소로 바꿔 적으세요)
-
+**바로 써 보기:**  https://2rachel2.github.io/3/ 
 ## 주요 기능
 
 - **오늘의 퀘스트:** 퀘스트를 추가하고 이름과 XP를 직접 정합니다. 체크하는 즉시 XP를 받고, 그날 퀘스트를 모두 끝내면 올클리어 보너스가 들어옵니다.
@@ -34,13 +33,6 @@ GitHub Pages 주소(https)로 열어야 설치할 수 있습니다.
 
 - 기록은 쓰는 기기의 브라우저에만 저장됩니다. 서버로 전송되지 않고, 다른 기기에서 열면 새로 시작합니다.
 - 브라우저의 사이트 데이터를 지우거나 시크릿 모드로 열면 기록이 사라질 수 있습니다.
-
-## 내 GitHub에 올리는 방법
-
-1. `New repository`로 **Public** 저장소를 만듭니다.
-2. `uploading an existing file`로 이 폴더의 파일 8개(`index.html`, `manifest.webmanifest`, `sw.js`, 아이콘 이미지 4개, `README.md`)를 모두 올리고 `Commit changes`를 누릅니다. 폴더나 zip째가 아니라 파일을 바깥에 바로 올려야 합니다.
-3. `Settings` → `Pages`에서 Source를 `Deploy from a branch`, Branch를 `main` / `/ (root)`로 고르고 `Save`를 누릅니다.
-4. 1~2분 뒤 `https://내아이디.github.io/저장소이름/`으로 열립니다.
 
 ## 기술
 
