@@ -35,13 +35,6 @@ GitHub Pages 주소(https)로 열어야 설치할 수 있습니다.
 - 기록은 쓰는 기기의 브라우저에만 저장됩니다. 서버로 전송되지 않고, 다른 기기에서 열면 새로 시작합니다.
 - 브라우저의 사이트 데이터를 지우거나 시크릿 모드로 열면 기록이 사라질 수 있습니다.
 
-## 내 GitHub에 올리는 방법
-
-1. `New repository`로 **Public** 저장소를 만듭니다.
-2. `uploading an existing file`로 이 폴더의 파일 8개(`index.html`, `manifest.webmanifest`, `sw.js`, 아이콘 이미지 4개, `README.md`)를 모두 올리고 `Commit changes`를 누릅니다. 폴더나 zip째가 아니라 파일을 바깥에 바로 올려야 합니다.
-3. `Settings` → `Pages`에서 Source를 `Deploy from a branch`, Branch를 `main` / `/ (root)`로 고르고 `Save`를 누릅니다.
-4. 1~2분 뒤 `https://내아이디.github.io/저장소이름/`으로 열립니다.
-
 ## 기술
 
 - 순수 HTML, CSS, JavaScript로 만들었고 빌드 과정이 없습니다. 앱 설치와 오프라인 실행은 `manifest.webmanifest`와 `sw.js`(서비스 워커)가 맡습니다.
