@@ -97,10 +97,16 @@
   .field > span { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
   input[type="text"], input[type="number"], input[type="date"], select {
     width: 100%; min-height: 44px; padding: 0 12px; border-radius: 10px;
-    border: 1px solid var(--line); background: var(--bg); min-width: 0;
+    border: 1px solid var(--line); background: var(--bg); min-width: 0; max-width: 100%; box-sizing: border-box;
   }
-  .form { display: grid; gap: 10px; padding: 14px; }
-  .row2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+  input[type="date"] {
+    -webkit-appearance: none; appearance: none; display: block; text-align: left;
+    font: inherit; color: inherit; line-height: 42px;
+  }
+  input[type="date"]::-webkit-date-and-time-value { text-align: left; min-width: 0; }
+  .form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 14px; }
+  .row2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 10px; }
+  .row2 > * { min-width: 0; }
   .empty { padding: 18px 14px; color: var(--muted); font-size: 14px; }
 
   /* 체크박스 */
