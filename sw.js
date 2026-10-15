@@ -1,7 +1,7 @@
-var CACHE = "hn-quest-v3";
-var SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
+var CACHE = "hn-quest-v4";
+var SHELL = ["./", "./index.html"];
 self.addEventListener("install", function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));
+  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL).catch(function () {}); }).then(function () { return self.skipWaiting(); }));
 });
 self.addEventListener("activate", function (e) {
   e.waitUntil(caches.keys().then(function (ks) {
@@ -11,13 +11,18 @@ self.addEventListener("activate", function (e) {
 self.addEventListener("fetch", function (e) {
   var r = e.request;
   if (r.method !== "GET") return;
+  var same = new URL(r.url).origin === self.location.origin;
   var put = function (res) {
     if (res && (res.ok || res.type === "opaque")) { var c = res.clone(); caches.open(CACHE).then(function (ch) { ch.put(r, c); }); }
     return res;
   };
-  if (r.mode === "navigate") {
-    e.respondWith(fetch(r).then(put).catch(function () { return caches.match(r).then(function (m) { return m || caches.match("./index.html"); }); }));
+  if (same) {
+    // 우리 파일은 항상 최신본을 먼저 가져오고, 오프라인일 때만 저장본을 씁니다.
+    e.respondWith(fetch(r, { cache: "no-cache" }).then(put).catch(function () {
+      return caches.match(r).then(function (m) { return m || (r.mode === "navigate" ? caches.match("./index.html") : undefined); });
+    }));
   } else {
+    // 글꼴 같은 외부 파일은 저장본이 있으면 그대로 씁니다.
     e.respondWith(caches.match(r).then(function (m) { return m || fetch(r).then(put); }));
   }
 });
